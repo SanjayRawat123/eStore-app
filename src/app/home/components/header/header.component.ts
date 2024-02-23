@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import {  faSearch, faUserCircle, faHeart, faShoppingCart  } from "@fortawesome/free-solid-svg-icons";
+import {  faSearch, faUserCircle, faShoppingCart  } from "@fortawesome/free-solid-svg-icons";
+import { CategoriesStoreItem } from "../../services/categories.storageItem";
 
 
 @Component({
@@ -10,6 +11,9 @@ import {  faSearch, faUserCircle, faHeart, faShoppingCart  } from "@fortawesome/
 export class HeaderComponent {
   faSearch = faSearch;
   faUserCircle = faUserCircle;
-  faHeart = faHeart;
-  faShoppingCart = faShoppingCart;
+   faShoppingCart = faShoppingCart;
+
+  constructor(public categoryStore: CategoriesStoreItem ){
+
+  }
 }

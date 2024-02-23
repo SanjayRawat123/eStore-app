@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Category } from '../../types/category.type';
-import { CategoryService } from '../../services/category.service';
-
+import { Subscription } from 'rxjs';
+import { CategoriesStoreItem } from '../../services/categories.storageItem';
 @Component({
   selector: 'app-sidenavigation',
   templateUrl: './sidenavigation.component.html',
@@ -9,15 +9,26 @@ import { CategoryService } from '../../services/category.service';
 })
 export class SidenavigationComponent {
   categories: Category[] = [];
-  constructor(private categroyService: CategoryService) {
-    this.categories = this.categroyService.getAllCategories();
+  subscriptions: Subscription = new Subscription();
+  
+  constructor(categoryStore: CategoriesStoreItem) {
+    this.subscriptions.add(
+      categoryStore.categories$.subscribe((categories) => {
+        this.categories = categories;
+      })
+    );
   }
 
-  
   getCategories(parentCategoryId?: number): Category[] {
-    return this.categories.filter(
-      (category) => category.parent_category_id === parentCategoryId
+    return this.categories.filter((category) =>
+      parentCategoryId
+        ? category.parent_category_id === parentCategoryId
+        : category.parent_category_id === null
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
 }
