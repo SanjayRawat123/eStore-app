@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Category } from '../../types/category.type';
 import { Subscription } from 'rxjs';
-import { CategoriesStoreItem } from '../../services/categories.storageItem';
+import { CategoriesStoreItem } from '../../services/category/categories.storageItem';
 @Component({
   selector: 'app-sidenavigation',
   templateUrl: './sidenavigation.component.html',
@@ -10,7 +10,7 @@ import { CategoriesStoreItem } from '../../services/categories.storageItem';
 export class SidenavigationComponent {
   categories: Category[] = [];
   subscriptions: Subscription = new Subscription();
-  
+
   constructor(categoryStore: CategoriesStoreItem) {
     this.subscriptions.add(
       categoryStore.categories$.subscribe((categories) => {
@@ -30,5 +30,4 @@ export class SidenavigationComponent {
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
-
 }

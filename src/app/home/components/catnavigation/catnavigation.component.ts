@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { CategoryService } from '../../services/category.service';
-import { Category } from '../../types/category.type';
-import { CategoriesStoreItem } from '../../services/categories.storageItem';
+import { CategoriesStoreItem } from '../../services/category/categories.storageItem';
 
 @Component({
   selector: 'app-catnavigation',

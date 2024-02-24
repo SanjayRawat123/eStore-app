@@ -8,8 +8,8 @@ import { SidenavigationComponent } from './components/sidenavigation/sidenavigat
 import { ProductsComponent } from './components/products/products.component';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoryService } from './services/category.service';
-import { CategoriesStoreItem } from './services/categories.storageItem';
+import { CategoriesStoreItem } from './services/category/categories.storageItem';
+import { CategoryService } from './services/category/category.service';
 
 @NgModule({
   declarations: [

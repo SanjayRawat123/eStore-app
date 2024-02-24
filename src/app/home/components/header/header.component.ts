@@ -1,19 +1,20 @@
-import { Component } from "@angular/core";
-import {  faSearch, faUserCircle, faShoppingCart  } from "@fortawesome/free-solid-svg-icons";
-import { CategoriesStoreItem } from "../../services/categories.storageItem";
-
+import { Component } from '@angular/core';
+import {
+  faSearch,
+  faUserCircle,
+  faShoppingCart,
+} from '@fortawesome/free-solid-svg-icons';
+import { CategoriesStoreItem } from '../../services/category/categories.storageItem';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   faSearch = faSearch;
   faUserCircle = faUserCircle;
-   faShoppingCart = faShoppingCart;
+  faShoppingCart = faShoppingCart;
 
-  constructor(public categoryStore: CategoriesStoreItem ){
-
-  }
+  constructor(public categoryStore: CategoriesStoreItem) {}
 }
