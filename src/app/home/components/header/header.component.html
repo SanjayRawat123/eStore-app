@@ -5,13 +5,13 @@
         </div>
 
         <div class="p-0 my-4 w-50 h-25 bg-white">
-            <select class="dropdown p-0 m-0" name="category">
-                <option *ngFor="let category of categoryStore.topLevelCategories$ | async">
+            <select #categoryOptions class="dropdown p-0 m-0" name="category">
+                <option *ngFor="let category of categoryStore.topLevelCategories$ | async" value="{{category.id}}">
                     {{category.category}}
                 </option>
             </select>
-            <input class="form-control search-box" placeholder="Search..." />
-            <button class="search-button">
+            <input #keyword class="form-control search-box" placeholder="Search..." />
+            <button class="search-button" (click)="onClickSearch(keyword.value, categoryOptions.value)">
                 <fa-icon [icon]="faSearch"></fa-icon>
             </button>
         </div>

@@ -10,7 +10,7 @@ export class ProductStoreItem extends StoreItem<Product[]> {
     super([]);
   }
 
-  async loadProducts(query?:string) {
+  async loadProducts(query?: string) {
     this.productService.getAllProducts(query).subscribe((products) => {
       this.setValue(products);
     });
@@ -18,5 +18,9 @@ export class ProductStoreItem extends StoreItem<Product[]> {
 
   get products$(): Observable<Product[]> {
     return this.value$;
+  }
+
+  get products(): Product[] {
+    return this.value;
   }
 }
