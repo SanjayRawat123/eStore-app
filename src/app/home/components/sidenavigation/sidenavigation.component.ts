@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Category } from '../../types/category.type';
 import { Subscription } from 'rxjs';
 import { CategoriesStoreItem } from '../../services/category/categories.storageItem';
@@ -8,10 +8,13 @@ import { CategoriesStoreItem } from '../../services/category/categories.storageI
   styleUrls: ['./sidenavigation.component.scss'],
 })
 export class SidenavigationComponent {
+  @Output() subCategoryClicked: EventEmitter<number> =
+    new EventEmitter<number>();
+
   categories: Category[] = [];
   subscriptions: Subscription = new Subscription();
 
-  constructor(categoryStore: CategoriesStoreItem) {
+  constructor(public categoryStore: CategoriesStoreItem) {
     this.subscriptions.add(
       categoryStore.categories$.subscribe((categories) => {
         this.categories = categories;
@@ -25,6 +28,10 @@ export class SidenavigationComponent {
         ? category.parent_category_id === parentCategoryId
         : category.parent_category_id === null
     );
+  }
+
+  onSubcategoryClick(subCategory:Category):void{
+    this.subCategoryClicked.emit(subCategory.id);
   }
 
   ngOnDestroy(): void {

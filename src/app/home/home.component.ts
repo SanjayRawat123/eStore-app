@@ -8,8 +8,15 @@ import { ProductStoreItem } from './services/product/productStoreItem';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  constructor(private categoriesStoreItem: CategoriesStoreItem , private productStoreItem:ProductStoreItem) {
+  constructor(
+    private categoriesStoreItem: CategoriesStoreItem,
+    private productStoreItem: ProductStoreItem
+  ) {
     this.categoriesStoreItem.loadCategories();
     this.productStoreItem.loadProducts();
+  }
+
+  onSelectSubCategory(subCategoryId: any): void {
+    this.productStoreItem.loadProducts('subCategoryId= '+subCategoryId);
   }
 }
