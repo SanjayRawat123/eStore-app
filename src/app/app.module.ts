@@ -5,11 +5,11 @@ import { NgModule } from '@angular/core';
 import { HeaderComponent } from './home/components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CatnavigationComponent } from './home/components/catnavigation/catnavigation.component';
-import { HomeModule } from './home/home.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeRoutingModule } from './home/home-routing.module';
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, HomeModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
