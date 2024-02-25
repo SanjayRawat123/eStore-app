@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CategoriesStoreItem } from './services/category/categories.storageItem';
+import { ProductStoreItem } from './services/product/productStoreItem';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,8 @@ import { CategoriesStoreItem } from './services/category/categories.storageItem'
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  constructor(private categoriesStoreItem: CategoriesStoreItem) {
+  constructor(private categoriesStoreItem: CategoriesStoreItem , private productStoreItem:ProductStoreItem) {
     this.categoriesStoreItem.loadCategories();
+    this.productStoreItem.loadProducts();
   }
 }

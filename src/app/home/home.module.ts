@@ -10,6 +10,8 @@ import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriesStoreItem } from './services/category/categories.storageItem';
 import { CategoryService } from './services/category/category.service';
+import { ProductStoreItem } from './services/product/productStoreItem';
+import { ProductsService } from './services/product/products.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,6 @@ import { CategoryService } from './services/category/category.service';
     ProductsComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, SharedModule, HttpClientModule],
-  providers: [CategoryService, CategoriesStoreItem],
+  providers: [CategoryService, CategoriesStoreItem, ProductsService,ProductStoreItem],
 })
 export class HomeModule {}
