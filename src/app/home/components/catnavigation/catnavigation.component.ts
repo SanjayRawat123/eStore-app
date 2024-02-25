@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CategoriesStoreItem } from '../../services/category/categories.storageItem';
+import { Category } from '../../types/category.type';
 
 @Component({
   selector: 'app-catnavigation',
@@ -7,6 +8,11 @@ import { CategoriesStoreItem } from '../../services/category/categories.storageI
   styleUrls: ['./catnavigation.component.scss'],
 })
 export class CatnavigationComponent {
-   constructor(public categoryStore: CategoriesStoreItem) {
-     }
+  @Output() categoryClicked: EventEmitter<number> =
+    new EventEmitter<number>();
+  constructor(public categoryStore: CategoriesStoreItem) {}
+
+  onCategoryClick(category:Category):void{
+    return this.categoryClicked.emit(category.id);
+  }
 }
