@@ -11,6 +11,16 @@
             </h5>
             <p class="product-price">{{ product.price | currency }}</p>
             <p><app-ratings [score]='product.ratings'></app-ratings></p>
+            <div class="my-3" (click)="addToCart(product)">
+                <div class="cart-button">
+                    <div class="cart-icon-container">
+                        <fa-icon [icon]="faShoppingCart"></fa-icon>
+                    </div>
+                    <div class="cart-text-container mx-3">
+                        <p>Add to Cart</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

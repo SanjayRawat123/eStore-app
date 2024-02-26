@@ -16,6 +16,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeRoutingModule } from './home-routing.module';
 import { ProductsGellaryComponent } from './components/products-gellary/products-gellary.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { CartStoreItem } from './services/cart/cartStoreItems';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     ProductsComponent,
     ProductsGellaryComponent,
     ProductDetailsComponent,
+    CartComponent,
   ],
   imports: [
     CommonModule,
@@ -33,13 +36,14 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     SharedModule,
     HttpClientModule,
     RouterModule,
-    HomeRoutingModule
+    HomeRoutingModule,
   ],
   providers: [
     CategoryService,
     CategoriesStoreItem,
     ProductsService,
     ProductStoreItem,
+    CartStoreItem,
   ],
 })
 export class HomeModule {}

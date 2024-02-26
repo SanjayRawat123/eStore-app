@@ -10,6 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { CategoriesStoreItem } from '../../services/category/categories.storageItem';
 import { SearchKeyword } from '../../types/searchKeyword.type';
 import { filter } from 'rxjs';
+import { CartStoreItem } from '../../services/cart/cartStoreItems';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +27,8 @@ export class HeaderComponent {
     new EventEmitter<SearchKeyword>();
   constructor(
     public categoryStore: CategoriesStoreItem,
-    private router: Router
+    private router: Router,
+    public cartStore: CartStoreItem
   ) {
     router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -41,5 +43,9 @@ export class HeaderComponent {
       keyword: keyword,
       categoryId: parseInt(categoryId),
     });
+  }
+
+  navigateToCart(): void {
+    this.router.navigate(['home/cart']);
   }
 }
