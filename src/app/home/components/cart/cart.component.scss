@@ -45,4 +45,28 @@
             }
         }
     }
+
+    .cart-summary {
+        height: fit-content;
+        border-radius: 2em;
+        background-color: aliceblue;
+        text-align: start;
+
+        span {
+            display: block;
+            color: rgb(78, 78, 78);
+            margin: 1em 0;
+        }
+
+        h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .summary-total {
+            color: black;
+            font-weight: 550;
+        }
+    }
+
+    
 }
