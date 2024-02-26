@@ -1,11 +1,15 @@
-import { Component,EventEmitter,Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   faSearch,
   faUserCircle,
   faShoppingCart,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { NavigationEnd, Router } from '@angular/router';
+
 import { CategoriesStoreItem } from '../../services/category/categories.storageItem';
 import { SearchKeyword } from '../../types/searchKeyword.type';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -16,13 +20,26 @@ export class HeaderComponent {
   faSearch = faSearch;
   faUserCircle = faUserCircle;
   faShoppingCart = faShoppingCart;
-  
-  @Output()searchClicked:EventEmitter<SearchKeyword> = new EventEmitter<SearchKeyword>();
-  constructor(public categoryStore: CategoriesStoreItem) {}
+  displaySearch: boolean = true;
 
-  onClickSearch(keyword:string, categoryId:string){
-        this.searchClicked.emit({keyword:keyword,categoryId:parseInt(categoryId)
-        });
+  @Output() searchClicked: EventEmitter<SearchKeyword> =
+    new EventEmitter<SearchKeyword>();
+  constructor(
+    public categoryStore: CategoriesStoreItem,
+    private router: Router
+  ) {
+    router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        this.displaySearch =
+          (event as NavigationEnd).url === '/home/products' ? true : false;
+      });
   }
 
+  onClickSearch(keyword: string, categoryId: string) {
+    this.searchClicked.emit({
+      keyword: keyword,
+      categoryId: parseInt(categoryId),
+    });
+  }
 }

@@ -15,4 +15,9 @@ export class ProductsService {
     }
     return this.httpClient.get<Product[]>(url);
   }
+
+  getProduct(id: number): Observable<Product[]> {
+    const url: string = 'http://localhost:3000/products/' + id;
+    return this.httpClient.get<Product[]>(url);
+  }
 }

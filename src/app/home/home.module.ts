@@ -15,6 +15,7 @@ import { ProductsService } from './services/product/products.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeRoutingModule } from './home-routing.module';
 import { ProductsGellaryComponent } from './components/products-gellary/products-gellary.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProductsGellaryComponent } from './components/products-gellary/products
     SidenavigationComponent,
     ProductsComponent,
     ProductsGellaryComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     CommonModule,

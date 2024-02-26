@@ -13,6 +13,10 @@
         border-radius: 0.6em;
 
         .product-image-container {
+            a {
+                cursor: pointer !important;
+            }
+
             img {
                 display: flex;
                 justify-content: center;

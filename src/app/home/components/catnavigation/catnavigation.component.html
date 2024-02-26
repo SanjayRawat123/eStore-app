@@ -1,9 +1,12 @@
 <div class='navigation-container'>
   <ul>
-    <li><a href="Javascript:void(0)">home</a></li>
-    <li *ngFor="let category of categoryStore.topLevelCategories$ | async"><a (click)="onCategoryClick(category)">
-        {{category.category}}
-      </a></li>
+    <li><a routerLink="/home/products">home</a></li>
+    <ng-container *ngIf='displayOptions'>
+      <li *ngFor="let category of categoryStore.topLevelCategories$ | async">
+        <a (click)="onCategoryClick(category)">{{ category.category }}</a>
+      </li>
+    </ng-container>
+
 
   </ul>
 </div>
