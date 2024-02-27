@@ -66,8 +66,17 @@
             </span>
         </div>
         <div class="text-center form-group-margin">
-           
+
             <button type="submit" class="btn btn-warning" [disabled]="!userSignupForm.valid">Join</button>
+        </div>
+        <div class="alert" [ngClass]="
+          alertType === 0
+            ? 'alert-success'
+            : alertType === 1
+            ? 'alert-warning'
+            : 'alert-danger'
+        " *ngIf="alertMessage !== ''">
+            {{ alertMessage }}
         </div>
     </form>
 </div>
