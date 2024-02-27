@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { ProductsGellaryComponent } from './components/products-gellary/products-gellary.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartComponent } from './components/cart/cart.component';
+import { UserSignupComponent } from './components/users/user-signup/user-signup.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,11 @@ const routes: Routes = [
       {
         path:'cart',
         component:CartComponent
-      }
+      },
+      {
+        path: 'signup',
+        component: UserSignupComponent,
+      },
     ],
   },
 ];

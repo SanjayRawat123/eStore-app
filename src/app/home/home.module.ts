@@ -18,6 +18,8 @@ import { ProductsGellaryComponent } from './components/products-gellary/products
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartStoreItem } from './services/cart/cartStoreItems';
 import { CartComponent } from './components/cart/cart.component';
+import { UserSignupComponent } from './components/users/user-signup/user-signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { CartComponent } from './components/cart/cart.component';
     ProductsGellaryComponent,
     ProductDetailsComponent,
     CartComponent,
+    UserSignupComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +40,7 @@ import { CartComponent } from './components/cart/cart.component';
     HttpClientModule,
     RouterModule,
     HomeRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [
     CategoryService,
