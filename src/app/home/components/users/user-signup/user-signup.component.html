@@ -7,6 +7,9 @@
             <div class="form-group col-md-6">
                 <label for="firstName">First Name*</label>
                 <input type="text" class="form-control" id="firstName" formControlName="firstName" />
+                <span class="text-danger" *ngIf="firstName?.touched && firstName?.errors?.['required']">
+                    First Name is required
+                </span>
             </div>
             <div class="form-group col-md-6">
                 <label for="lastName">Last Name</label>
@@ -37,18 +40,34 @@
         <div class="form-group form-group-margin">
             <label for="email">Email*</label>
             <input type="text" class="form-control" id="email" formControlName="email" />
+            <span class="text-danger" *ngIf="email?.touched && email?.errors?.['required']">
+                Email is required
+            </span>
+            <span class="text-danger" *ngIf="email?.touched && email?.errors?.['email']">
+                Enter valid email address
+            </span>
         </div>
         <div class="form-group form-group-margin">
             <label for="password">Password*</label>
             <input type="password" class="form-control" id="password" formControlName="password" />
+            <span class="text-danger" *ngIf="password?.touched && password?.errors?.['required']">
+                Password is required
+            </span>
         </div>
 
         <div class="form-group form-group-margin">
             <label for="confirmPassword">Confirm Password*</label>
             <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" />
+            <span class="text-danger" *ngIf="confirmPassword?.touched && confirmPassword?.errors?.['required']">
+                Confirm Password is required
+            </span>
+            <span class="text-danger" *ngIf="confirmPassword?.touched && userSignupForm.errors?.['passwordMismatch']">
+                Passwords doesn't match
+            </span>
         </div>
         <div class="text-center form-group-margin">
-            <button type="submit" class="btn btn-warning">Join</button>
+           
+            <button type="submit" class="btn btn-warning" [disabled]="!userSignupForm.valid">Join</button>
         </div>
     </form>
 </div>
