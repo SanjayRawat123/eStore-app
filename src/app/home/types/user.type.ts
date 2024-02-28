@@ -9,7 +9,12 @@ export interface User {
   password: string;
 }
 
-export interface userLogin {
+export interface UserLogin {
   email: string;
   password: string;
+}
+
+export interface LoginToken {
+  token: string;
+  expiresInSeconds: number;
 }
