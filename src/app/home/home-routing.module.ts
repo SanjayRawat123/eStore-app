@@ -5,6 +5,7 @@ import { ProductsGellaryComponent } from './components/products-gellary/products
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartComponent } from './components/cart/cart.component';
 import { UserSignupComponent } from './components/users/user-signup/user-signup.component';
+import { UserLoginComponent } from './components/users/user-login/user-login.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'signup',
         component: UserSignupComponent,
+      },
+      {
+        path: 'login',
+        component: UserLoginComponent,
       },
     ],
   },

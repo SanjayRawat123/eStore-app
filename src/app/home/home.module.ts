@@ -20,6 +20,7 @@ import { CartStoreItem } from './services/cart/cartStoreItems';
 import { CartComponent } from './components/cart/cart.component';
 import { UserSignupComponent } from './components/users/user-signup/user-signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserLoginComponent } from './components/users/user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductDetailsComponent,
     CartComponent,
     UserSignupComponent,
+    UserLoginComponent,
   ],
   imports: [
     CommonModule,
