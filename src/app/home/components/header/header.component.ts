@@ -54,6 +54,9 @@ export class HeaderComponent implements OnDestroy {
       })
     );
   }
+  logout(): void {
+    this.userService.logout();
+  }
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
