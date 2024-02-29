@@ -1,6 +1,6 @@
-<div class='header bg-dark'>
-    <div class='row'>
-        <div class='brand my-1'>
+<div class="header bg-dark">
+    <div class="row">
+        <div class="brand my-1">
             <h1>eStore</h1>
         </div>
 
@@ -38,7 +38,7 @@
         </div>
 
         <div class="cart-wishlist p-0 list-item">
-            <button (click)="navigateToCart()" type="button" class="btn btn-dark position-relative">
+            <button type="button" class="btn btn-dark position-relative" (click)="navigateToCart()">
                 <fa-icon [icon]="faShoppingCart"></fa-icon>
                 <ng-container *ngIf="cartStore.cart$ | async as cart">
                     <span *ngIf="cart.totalProducts > 0"
@@ -49,5 +49,4 @@
             </button>
         </div>
     </div>
-
 </div>
