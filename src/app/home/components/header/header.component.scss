@@ -51,11 +51,12 @@ $search-bar-border: none;
     margin: 1.7em 0.2em 0 0;
 
     h5 {
-            display: inline-block;
-            a {
-                    text-decoration: none;
-                    color: white;
-                }
+        display: inline-block;
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
     }
 
     .user-icon {
@@ -65,6 +66,25 @@ $search-bar-border: none;
     }
 }
 
+.user-container {
+    color: white;
+    display: inline-block;
+    width: 15em;
+    margin: 1.5em 0.2em 0 1.5em;
+}
+
+.user-dropdown {
+    background-color: #212529;
+    width: 11em;
+    z-index: 1000;
+    position: absolute;
+}
+
+.user-dropdown-button {
+    background-color: #212529;
+    border-color: #212529;
+}
+
 .cart-wishlist {
     width: 8%;
     margin-top: 1.7em;
@@ -72,7 +92,7 @@ $search-bar-border: none;
 
 
     .list-item {
-        color:white;
+        color: white;
         list-style-type: none;
         display: inline-block;
         font-size: 1.3em;
