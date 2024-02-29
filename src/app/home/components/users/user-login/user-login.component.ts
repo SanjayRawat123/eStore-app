@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import {
   AbstractControl,
   FormBuilder,
@@ -16,7 +17,11 @@ export class UserLoginComponent implements OnInit {
   userLoginForm!: FormGroup;
   alertType: number = 0;
   alertMessage: string = '';
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.userLoginForm = this.fb.group({
@@ -35,12 +40,14 @@ export class UserLoginComponent implements OnInit {
 
   onSubmit(): void {
     this.userService.login(this.email?.value, this.password?.value).subscribe({
-
       next: (result: LoginToken) => {
-        console.log(result)
+        console.log(result);
         this.userService.activateToken(result);
         this.alertType = 0;
         this.alertMessage = 'Login successful';
+        setTimeout(() => {
+          this.location.back();
+        }, 1000);
       },
       error: (error) => {
         this.alertType = 2;
