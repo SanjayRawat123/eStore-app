@@ -16,5 +16,5 @@ export interface UserLogin {
 
 export interface LoginToken {
   token: string;
-  expiresInSeconds: number;
+  expireInSeconds: number;
 }
