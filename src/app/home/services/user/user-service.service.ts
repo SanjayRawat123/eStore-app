@@ -4,6 +4,8 @@ import { LoginToken, User, LoggedInUser } from 'src/app/home/types/user.type';
 import { Observable, BehaviorSubject } from 'rxjs';
 @Injectable()
 export class UserService {
+  private autoLogoutTimer: any;
+  private authToken!: string;
   private isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(
     false
   );
@@ -11,7 +13,7 @@ export class UserService {
   private loggedInUserInfo: BehaviorSubject<LoggedInUser> = new BehaviorSubject(
     <LoggedInUser>{}
   );
-  private autoLogoutTimer: any;
+
   constructor(private http: HttpClient) {
     this.loadToken();
   }
@@ -26,6 +28,11 @@ export class UserService {
   get loggedInUser$(): Observable<LoggedInUser> {
     return this.loggedInUserInfo.asObservable();
   }
+
+  get token(): string {
+    return this.authToken;
+  }
+
   createUser(user: User): Observable<any> {
     const url: string = 'http://localhost:3000/users/signup';
     return this.http.post(url, user);
@@ -48,10 +55,11 @@ export class UserService {
     localStorage.setItem('city', token.user.city);
     localStorage.setItem('state', token.user.state);
     localStorage.setItem('pin', token.user.pin);
-
+    localStorage.setItem('email', token.user.email);
     this.isAuthenticated.next(true);
     this.loggedInUserInfo.next(token.user);
     this.setAutoLogoutTimer(token.expireInSeconds * 1000);
+    this.authToken = token.token;
   }
 
   logout(): void {
@@ -82,7 +90,7 @@ export class UserService {
         const city: string | null = localStorage.getItem('city');
         const state: string | null = localStorage.getItem('state');
         const pin: string | null = localStorage.getItem('pin');
-
+        const email: string | null = localStorage.getItem('email');
         const user: LoggedInUser = {
           firstName: firstName !== null ? firstName : '',
           lastName: lastName !== null ? lastName : '',
@@ -90,6 +98,7 @@ export class UserService {
           city: city !== null ? city : '',
           state: state !== null ? state : '',
           pin: pin !== null ? pin : '',
+          email: email !== null ? email : '',
         };
 
         this.isAuthenticated.next(true);
