@@ -2,7 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CartStoreItem } from '../cart/cartStoreItems';
 import { UserService } from '../user/user-service.service';
-import { Order, OrderItem } from '../../types/order.type';
+import {
+  Order,
+  OrderItem,
+  PastOrder,
+  PastOrderProduct,
+} from '../../types/order.type';
 import { Observable } from 'rxjs';
 import { DeliveryAddress } from '../../types/cart.type';
 
@@ -11,14 +16,14 @@ export class OrderService {
   constructor(
     private httpClient: HttpClient,
     private cartStore: CartStoreItem,
-    private userservice: UserService
+    private userService: UserService
   ) {}
 
   saveOrder(
     deliveryAddress: DeliveryAddress,
     userEmail: string
   ): Observable<any> {
-    console.log(deliveryAddress,userEmail)
+    console.log(deliveryAddress, userEmail);
     const url: string = 'http://localhost:3000/orders/add';
     const orderDetails: OrderItem[] = [];
     this.cartStore.cart.products.forEach((product) => {
@@ -42,7 +47,23 @@ export class OrderService {
       orderDetails: orderDetails,
     };
     return this.httpClient.post(url, order, {
-      headers: { authorization: this.userservice.token },
+      headers: { authorization: this.userService.token },
+    });
+  }
+
+  getOrders(userEmail: string): Observable<PastOrder[]> {
+    const url: string = `http://localhost:3000/orders/allorders?userEmail=${userEmail}`;
+
+    return this.httpClient.get<PastOrder[]>(url, {
+      headers: { authorization: this.userService.token },
+    });
+  }
+
+  getOrderProducts(orderId: number): Observable<PastOrderProduct[]> {
+    const url: string = `http://localhost:3000/orders/orderproducts?orderId=${orderId}`;
+
+    return this.httpClient.get<PastOrderProduct[]>(url, {
+      headers: { authorization: this.userService.token },
     });
   }
 }
