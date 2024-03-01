@@ -71,4 +71,7 @@ export class HeaderComponent implements OnDestroy {
   navigateToCart(): void {
     this.router.navigate(['home/cart']);
   }
+  pastOrders(): void {
+    this.router.navigate(['home/pastorders']);
+  }
 }
