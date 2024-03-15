@@ -8,6 +8,6 @@ export class CategoryService {
   constructor(private http: HttpClient) {}
 
   getAllCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>('http://localhost:3000/productCategories');
+    return this.http.get<Category[]>('http://13.200.122.78:8000/productCategories');
   }
 }

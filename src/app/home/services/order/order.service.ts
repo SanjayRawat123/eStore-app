@@ -24,7 +24,7 @@ export class OrderService {
     userEmail: string
   ): Observable<any> {
     console.log(deliveryAddress, userEmail);
-    const url: string = 'http://localhost:3000/orders/add';
+    const url: string = 'http://13.200.122.78:8000/orders/add';
     const orderDetails: OrderItem[] = [];
     this.cartStore.cart.products.forEach((product) => {
       const orderItem: OrderItem = {

@@ -38,12 +38,12 @@ export class UserService {
   }
 
   createUser(user: User): Observable<any> {
-    const url: string = 'http://localhost:3000/users/signup';
+    const url: string = 'http://13.200.122.78:8000/users/signup';
     return this.http.post(url, user);
   }
 
   login(email: string, password: string): Observable<any> {
-    const url: string = 'http://localhost:3000/users/login';
+    const url: string = 'http://13.200.122.78:8000/users/login';
     return this.http.post(url, { email: email, password: password });
   }
 
