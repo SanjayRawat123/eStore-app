@@ -25,7 +25,7 @@ jobs:
         run: ng build --configuration=production
 
       - name: Upload Build to EC2
-        uses: appleboy/scp-action@master
+        uses: easingthemes/ssh-deploy@v2.1.5
         with:
           host: ${{ secrets.EC2_HOST }}  # Your EC2 instance host
           username: ${{ secrets.EC2_USERNAME }}  
