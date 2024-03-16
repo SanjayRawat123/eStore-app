@@ -32,4 +32,3 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}  
           source: 'dist/e-store-app/' 
           target: '/var/www/html/eStore-app/dist'  
-RBAC
