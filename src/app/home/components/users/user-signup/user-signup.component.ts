@@ -8,6 +8,7 @@ import {
 import { matchPasswords } from './validators/match-passwords.validator';
 import { UserService } from '../../../services/user/user-service.service';
 import { User } from 'src/app/home/types/user.type';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-signup',
   templateUrl: './user-signup.component.html',
@@ -17,7 +18,7 @@ export class UserSignupComponent implements OnInit {
   userSignupForm!: FormGroup;
   alertMessage: string = '';
   alertType: number = 0; //0-success, 1-warning,2-error
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private userService: UserService,private router:Router) {}
   ngOnInit(): void {
     this.userSignupForm = this.fb.group(
       {
@@ -68,6 +69,7 @@ export class UserSignupComponent implements OnInit {
         if (result.message === 'success') {
           this.alertMessage = 'User created successfully';
           this.alertType = 0;
+          this.router.navigate(['/home/login'])
         } else if (result.message === 'Email already exists') {
           this.alertMessage = result.message;
           this.alertType = 1;

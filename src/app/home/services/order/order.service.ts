@@ -24,7 +24,7 @@ export class OrderService {
     userEmail: string
   ): Observable<any> {
     console.log(deliveryAddress, userEmail);
-    const url: string = 'http://13.200.122.78:8000/orders/add';
+    const url: string = 'http://13.200.122.78:3000/orders/add';
     const orderDetails: OrderItem[] = [];
     this.cartStore.cart.products.forEach((product) => {
       const orderItem: OrderItem = {
@@ -52,7 +52,7 @@ export class OrderService {
   }
 
   getOrders(userEmail: string): Observable<PastOrder[]> {
-    const url: string = `http://localhost:3000/orders/allorders?userEmail=${userEmail}`;
+    const url: string = `http://13.200.122.78:3000/orders/allorders?userEmail=${userEmail}`;
 
     return this.httpClient.get<PastOrder[]>(url, {
       headers: { authorization: this.userService.token },
@@ -60,7 +60,7 @@ export class OrderService {
   }
 
   getOrderProducts(orderId: number): Observable<PastOrderProduct[]> {
-    const url: string = `http://localhost:3000/orders/orderproducts?orderId=${orderId}`;
+    const url: string = `http://13.200.122.78:3000/orders/orderproducts?orderId=${orderId}`;
 
     return this.httpClient.get<PastOrderProduct[]>(url, {
       headers: { authorization: this.userService.token },
